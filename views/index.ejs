@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>90s Cartoons</title>
+</head>
+<body>
+    <h1>90s Cartoons</h1>
+    <ul>
+        <% cartoons.forEach(cartoon => { %>
+            <li><%= cartoon.name %> from <%= cartoon.show %> (Year: <%= cartoon.year %>)</li>
+        <% }); %>
+    </ul>
+</body>
+</html>
