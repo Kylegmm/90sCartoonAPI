@@ -31,7 +31,7 @@ router.put('/cartoons/:id', async (req, res) => {
 
 router.patch('/cartoons/:id', async (req, res) => {
     try {
-        const updatedCartoon = await dal.updateCartoon(req.params.id, req.body);
+        const updatedCartoon = await dal.patchCartoon(req.params.id, req.body);
         res.json(updatedCartoon);
     } catch (error) {
         res.status(500).json({ error: error.message });

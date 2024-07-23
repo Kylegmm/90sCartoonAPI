@@ -28,6 +28,13 @@ const updateCartoon = async (id, cartoon) => {
     return result.rows[0];
 };
 
+const patchCartoon = async (id, fields) => {
+    const setClause = Object.keys(fields).map((key, index) => `${key} = $${index + 1}`).join(', ');
+    const values = [...Object.values(fields), id];
+    const result = await pool.query(`UPDATE cartoons SET ${setClause} WHERE id = $${values.length} RETURNING *`, values);
+    return result.rows[0];
+};
+
 const deleteCartoon = async (id) => {
     const result = await pool.query('DELETE FROM cartoons WHERE id = $1 RETURNING *', [id]);
     return result.rows[0];
@@ -37,5 +44,6 @@ module.exports = {
     getCartoons,
     addCartoon,
     updateCartoon,
+    patchCartoon, 
     deleteCartoon
 };
