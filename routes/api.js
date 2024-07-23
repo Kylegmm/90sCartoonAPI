@@ -13,8 +13,8 @@ router.get('/cartoons', async (req, res) => {
 
 router.post('/cartoons', async (req, res) => {
     try {
-        const newCartoon = await dal.addCartoon(req.body);
-        res.status(201).json(newCartoon);
+        await dal.addCartoon(req.body);
+        res.redirect('/');
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -31,7 +31,7 @@ router.put('/cartoons/:id', async (req, res) => {
 
 router.patch('/cartoons/:id', async (req, res) => {
     try {
-        const updatedCartoon = await dal.patchCartoon(req.params.id, req.body);
+        const updatedCartoon = await dal.updateCartoon(req.params.id, req.body);
         res.json(updatedCartoon);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -40,8 +40,8 @@ router.patch('/cartoons/:id', async (req, res) => {
 
 router.delete('/cartoons/:id', async (req, res) => {
     try {
-        const deletedCartoon = await dal.deleteCartoon(req.params.id);
-        res.json(deletedCartoon);
+        await dal.deleteCartoon(req.params.id);
+        res.redirect('/');
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
