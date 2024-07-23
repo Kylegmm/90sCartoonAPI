@@ -1,0 +1,92 @@
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #ffffffb4; 
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.container {
+    background-color: #c9f4fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 3em;
+    color: #ff6347;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 600px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.add-cartoon-link {
+    display: block;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    color: #4682b4;
+    text-decoration: none;
+}
+
+.add-cartoon-link:hover {
+    color: #ff6347;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 1em;
+    border: 2px solid #4682b4;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    width: 80%;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #ff6347;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 20px 0;
+}
+
+a {
+    text-decoration: none;
+    color: #4682b4;
+}
+
+a:hover {
+    color: #ff6347;
+}
+
+button {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #ff4500;
+}
