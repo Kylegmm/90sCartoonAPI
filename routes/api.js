@@ -1,16 +1,50 @@
 const express = require('express');
 const router = express.Router();
+const dal = require('../dal');
 
-const mockCartoons = [
-    { id: 1, name: 'Tommy Pickles', show: 'Rugrats', year: 1991, description: 'The adventurous baby leader of the Rugrats.' },
-    { id: 2, name: 'SpongeBob SquarePants', show: 'SpongeBob SquarePants', year: 1999, description: 'A friendly sea sponge who lives in a pineapple under the sea.' },
-    { id: 3, name: 'Bugs Bunny', show: 'Looney Tunes', year: 1940, description: 'A clever rabbit known for outsmarting his enemies.' }
-];
-
-router.get('/cartoons', (req, res) => {
-    res.json(mockCartoons);
+router.get('/cartoons', async (req, res) => {
+    try {
+        const cartoons = await dal.getCartoons();
+        res.json(cartoons);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
 
-// Add POST, PUT, PATCH, DELETE routes here
+router.post('/cartoons', async (req, res) => {
+    try {
+        const newCartoon = await dal.addCartoon(req.body);
+        res.status(201).json(newCartoon);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+router.put('/cartoons/:id', async (req, res) => {
+    try {
+        const updatedCartoon = await dal.updateCartoon(req.params.id, req.body);
+        res.json(updatedCartoon);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+router.patch('/cartoons/:id', async (req, res) => {
+    try {
+        const updatedCartoon = await dal.updateCartoon(req.params.id, req.body);
+        res.json(updatedCartoon);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+router.delete('/cartoons/:id', async (req, res) => {
+    try {
+        const deletedCartoon = await dal.deleteCartoon(req.params.id);
+        res.json(deletedCartoon);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
 
 module.exports = router;
